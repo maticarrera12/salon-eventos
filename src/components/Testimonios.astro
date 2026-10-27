@@ -1,0 +1,75 @@
+---
+import { testimonios } from '../data/content';
+---
+
+<section class="wrap" aria-labelledby="testimonios-title">
+  <div class="head" data-reveal>
+    <span class="eyebrow"><span>05</span>Quienes ya festejaron</span>
+    <h2 id="testimonios-title" class="h2 head__title">Lo que <span class="serif">nos contaron.</span></h2>
+  </div>
+  <div class="quotes">
+    {
+      testimonios.map((t, i) => (
+        <figure class="quote" data-reveal style={`--i:${i};background:${t.bg}`}>
+          <blockquote class="serif">“{t.cita}”</blockquote>
+          <figcaption>
+            <span class="avatar"></span>
+            <span class="who">
+              <strong>{t.autor}</strong>
+              <span>{t.evento}</span>
+            </span>
+          </figcaption>
+        </figure>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .head {
+    padding: 0 clamp(8px, 1.5vw, 16px);
+  }
+  .head__title {
+    margin: 16px 0 0;
+  }
+  .quotes {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: var(--gap);
+  }
+  .quote {
+    border-radius: 32px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  blockquote {
+    font-size: clamp(26px, 2.3vw, 32px);
+    line-height: 1.15;
+    text-wrap: pretty;
+  }
+  figcaption {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    align-items: center;
+    font-size: 14px;
+  }
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.7);
+  }
+  .who {
+    display: flex;
+    flex-direction: column;
+  }
+  .who span {
+    color: var(--muted);
+    font-size: 13px;
+  }
+</style>

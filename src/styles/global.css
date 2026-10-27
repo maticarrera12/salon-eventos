@@ -1,0 +1,209 @@
+@import '@fontsource-variable/archivo';
+@import '@fontsource-variable/bricolage-grotesque/opsz.css';
+@import '@fontsource/instrument-serif/400-italic.css';
+
+:root {
+  --bg: #fff9f7;
+  --ink: #241b16;
+  --muted: #5c4e45;
+  --accent: #c2d076;
+  --accent-hover: #aebe5e;
+  --accent-text: #001514;
+  --peach: #e9efc0;
+  --wine: #001514;
+  --wine-hover: #12302e;
+  --coral: #c2d076;
+  --on-dark: #d9ccc2;
+
+  --display: 'Bricolage Grotesque Variable', sans-serif;
+  --serif: 'Instrument Serif', serif;
+  --body: 'Archivo Variable', system-ui, sans-serif;
+
+  /* Motion: custom curves, the built-in ones lack punch. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --pad-x: clamp(12px, 3vw, 40px);
+  --gap: clamp(12px, 1.6vw, 20px);
+  --section: clamp(80px, 9vw, 128px);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+body.is-locked {
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+p,
+figure,
+dl,
+dd,
+ol,
+ul,
+blockquote {
+  margin: 0;
+}
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+::selection {
+  background: #f4c9d6;
+}
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
+.wrap {
+  max-width: calc(1360px + 2 * var(--pad-x));
+  margin: 0 auto;
+  padding: var(--section) var(--pad-x) 0;
+}
+
+/* Display type helpers */
+.display {
+  font-family: var(--display);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+.serif {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: normal;
+}
+.h2 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(38px, 4.6vw, 68px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+.eyebrow {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent-text);
+}
+.eyebrow span {
+  background: var(--peach);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+.skip {
+  position: absolute;
+  left: var(--pad-x);
+  top: -80px;
+  z-index: 100;
+  background: var(--ink);
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.skip:focus {
+  top: 12px;
+}
+
+/* Pill buttons. Press feedback is instant; hover only on real pointers. */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  border-radius: 999px;
+  font-weight: 600;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    transform 160ms var(--ease-out);
+}
+.pill:active {
+  transform: scale(0.97);
+}
+.pill__arrow {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 220ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .pill:hover .pill__arrow {
+    transform: translateX(3px);
+  }
+}
+
+/* Scroll reveal: hidden only when JS is present, so the page works without it. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  filter: blur(4px);
+}
+.js [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  transition:
+    opacity 700ms var(--ease-out),
+    transform 700ms var(--ease-out),
+    filter 700ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .js [data-reveal] {
+    transform: none;
+    filter: none;
+  }
+  .js [data-reveal].is-in {
+    transition: opacity 300ms ease;
+    transition-delay: 0ms;
+  }
+}

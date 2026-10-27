@@ -1,0 +1,177 @@
+---
+---
+
+<section class="hero" aria-labelledby="hero-title" id="top">
+  <div class="hero__row">
+    <div class="hero__card">
+      <span class="hero__chip">San Fernando · Zona Norte</span>
+      <div>
+        <h1 id="hero-title" class="hero__title">
+          Tu fiesta, sin preocuparte <span class="serif hero__serif">por nada.</span>
+        </h1>
+        <p class="hero__lead">Salón para hasta 50 invitados con cocina propia, patio y una coordinadora que se ocupa de todo.</p>
+        <div class="hero__actions">
+          <a class="pill hero__primary" href="#contacto">
+            Consultá tu fecha <span class="pill__arrow hero__arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="pill hero__secondary" href="#salon">Conocé el salón</a>
+        </div>
+      </div>
+    </div>
+
+    <figure class="hero__photo">
+      <img class="hero__img" src="/img/hero.jpg" alt="Luces desenfocadas de colores en una noche de fiesta" width="1400" height="1000" fetchpriority="high" decoding="async" />
+      <div class="hero__tags">
+        <span style="background:#fff">Hasta 50 invitados</span>
+        <span style="background:#fbebb8">Patio con ceremonia</span>
+        <span style="background:#d6ebdc">Catering y DJ</span>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .hero {
+    max-width: calc(1360px + 2 * var(--pad-x));
+    margin: 0 auto;
+    padding: clamp(24px, 4vw, 56px) var(--pad-x) 0;
+  }
+  .hero__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap);
+  }
+  .hero__card {
+    flex: 5 1 380px;
+    min-width: 0;
+    background: #e9efc0;
+    border-radius: clamp(24px, 3vw, 40px);
+    padding: clamp(28px, 4vw, 56px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .hero__chip {
+    align-self: flex-start;
+    background: #fff;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .hero__title {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(48px, 6.6vw, 100px);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+  }
+  .hero__serif {
+    color: var(--accent-text);
+  }
+  .hero__lead {
+    margin-top: 24px;
+    font-size: 17px;
+    max-width: 34ch;
+    text-wrap: pretty;
+  }
+  .hero__actions {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .hero__primary {
+    background: var(--accent);
+    color: var(--wine);
+    padding: 16px 16px 16px 24px;
+  }
+  .hero__arrow {
+    background: var(--wine);
+    color: var(--accent);
+  }
+  .hero__secondary {
+    background: #fff;
+    padding: 16px 24px;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .hero__primary:hover {
+      background: var(--accent-hover);
+      color: var(--wine);
+    }
+    .hero__secondary:hover {
+      background: var(--bg);
+    }
+  }
+  .hero__photo {
+    flex: 7 1 440px;
+    min-height: clamp(420px, 46vw, 680px);
+    background: #ebd9cc;
+    border-radius: clamp(24px, 3vw, 40px);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero__tags {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .hero__tags span {
+    border-radius: 999px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  /* First paint, once: a short staggered rise on the opening content. */
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+  }
+  .hero__chip,
+  .hero__title,
+  .hero__lead,
+  .hero__actions {
+    animation: rise 700ms var(--ease-out) both;
+  }
+  .hero__title {
+    animation-delay: 70ms;
+  }
+  .hero__lead {
+    animation-delay: 140ms;
+  }
+  .hero__actions {
+    animation-delay: 210ms;
+  }
+  .hero__photo {
+    animation: fade 900ms var(--ease-out) 120ms both;
+  }
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__chip,
+    .hero__title,
+    .hero__lead,
+    .hero__actions {
+      animation-name: none;
+    }
+  }
+</style>

@@ -1,0 +1,126 @@
+---
+import { waLink } from '../data/content';
+---
+
+<footer class="foot">
+  <div class="foot__in">
+    <div class="foot__row">
+      <div class="foot__brand">
+        <span class="foot__logo">
+          <span class="foot__dot"></span>Salón <span class="serif foot__serif">Alba</span>
+        </span>
+        <p>Constitución 1450, San Fernando, Buenos Aires.</p>
+      </div>
+      <div class="foot__col foot__col--3">
+        <span class="foot__h">Contacto</span>
+        <a href="tel:+541147460000">11 4746-0000</a>
+        <a href="mailto:hola@salonalba.com.ar">hola@salonalba.com.ar</a>
+        <span class="foot__dim">Lun a vie 10–19 h · Sáb 10–14 h</span>
+      </div>
+      <div class="foot__col foot__col--2">
+        <span class="foot__h">Redes</span>
+        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+        <a href={waLink} target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+    <div class="foot__legal">
+      <span>© 2026 Salón Alba</span>
+      <span>
+        Diseño y desarrollo:
+        <a href="https://estudiocounterpoint.com" target="_blank" rel="noopener">CounterPoint</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .foot {
+    padding: 0 var(--pad-x) var(--pad-x);
+  }
+  .foot__in {
+    max-width: 1360px;
+    margin: 0 auto;
+    background: var(--wine);
+    color: #f2e8df;
+    border-radius: clamp(28px, 3.5vw, 48px);
+    padding: clamp(32px, 5vw, 64px) clamp(28px, 5vw, 72px) 28px;
+  }
+  .foot__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px clamp(24px, 4vw, 64px);
+  }
+  .foot__brand {
+    flex: 5 1 280px;
+  }
+  .foot__logo {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 40px;
+    letter-spacing: -0.03em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .foot__dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .foot__serif {
+    font-size: 46px;
+    margin-left: -6px;
+  }
+  .foot__brand p {
+    margin-top: 16px;
+    font-size: 14px;
+    color: #bfafa3;
+    max-width: 30ch;
+  }
+  .foot__col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 14px;
+  }
+  .foot__col--3 {
+    flex: 3 1 200px;
+  }
+  .foot__col--2 {
+    flex: 2 1 160px;
+  }
+  .foot__h {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--coral);
+    margin-bottom: 4px;
+  }
+  .foot__dim {
+    color: #bfafa3;
+  }
+  .foot__col a,
+  .foot__legal a {
+    color: #f2e8df;
+    width: fit-content;
+    transition: color 160ms ease;
+  }
+  .foot__legal {
+    margin-top: 48px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 12px;
+    color: #bfafa3;
+  }
+  .foot__legal a {
+    text-decoration: underline;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .foot__col a:hover {
+      color: var(--coral);
+    }
+  }
+</style>

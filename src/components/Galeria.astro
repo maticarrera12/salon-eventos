@@ -1,0 +1,153 @@
+---
+import { galeriaRows } from '../data/content';
+
+// Rows 1 and 3 travel right, row 2 travels left; different speeds keep it from feeling mechanical.
+const rows = [
+  { items: galeriaRows[0], dir: 'right', dur: 46 },
+  { items: galeriaRows[1], dir: 'left', dur: 58 },
+  { items: galeriaRows[2], dir: 'right', dur: 52 },
+];
+---
+
+<section class="wrap" aria-labelledby="galeria-title" id="galeria">
+  <div class="head">
+    <div data-reveal>
+      <span class="eyebrow"><span>04</span>Galería</span>
+      <h2 id="galeria-title" class="h2 head__title">Así se vive <span class="serif">un evento.</span></h2>
+    </div>
+    <a class="all" href="#contacto" data-reveal style="--i:1">Ver toda la galería →</a>
+  </div>
+
+  <div class="rows" data-reveal>
+    {
+      rows.map((r) => (
+        <div class="row" data-dir={r.dir} style={`--dur:${r.dur}s`}>
+          <div class="track">
+            {[0, 1].map((copy) => (
+              <ul class="set" aria-hidden={copy === 1 ? 'true' : undefined}>
+                {r.items.map((it) => (
+                  <li class="tile" style={`aspect-ratio:${it.ratio}`}>
+                    <img src={it.src} alt={copy === 0 ? it.alt : ''} loading="lazy" decoding="async" draggable="false" />
+                  </li>
+                ))}
+              </ul>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 clamp(8px, 1.5vw, 16px);
+  }
+  .head__title {
+    margin: 16px 0 0;
+  }
+  .all {
+    background: var(--wine);
+    color: #fff;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    transition:
+      background-color 160ms ease,
+      transform 160ms var(--ease-out);
+  }
+  .all:active {
+    transform: scale(0.97);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .all:hover {
+      background: var(--wine-hover);
+      color: #fff;
+    }
+  }
+
+  .rows {
+    --h: clamp(150px, 17vw, 240px);
+    --gap: clamp(10px, 1.2vw, 16px);
+    margin-top: 40px;
+    display: grid;
+    gap: var(--gap);
+  }
+  .row {
+    overflow: hidden;
+    border-radius: 32px;
+    /* Soft edges so tiles slide in and out instead of being cut. */
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  }
+  .track {
+    display: flex;
+    width: max-content;
+    animation: slide var(--dur) linear infinite;
+    will-change: transform;
+  }
+  .row[data-dir='right'] .track {
+    animation-direction: reverse;
+  }
+  .set {
+    display: flex;
+    gap: var(--gap);
+    padding: 0 var(--gap) 0 0;
+    margin: 0;
+    list-style: none;
+  }
+  .tile {
+    height: var(--h);
+    flex: none;
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--peach);
+    transition:
+      transform 300ms var(--ease-out),
+      opacity 300ms ease;
+  }
+  .tile img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    user-select: none;
+  }
+  /* Constant motion is linear; the loop is exactly one copy wide, so it never jumps. */
+  @keyframes slide {
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  /* Hover: the row pauses, the tile under the cursor lifts, its neighbours step back. */
+  @media (hover: hover) and (pointer: fine) {
+    .row:hover .track {
+      animation-play-state: paused;
+    }
+    .row:hover .tile:not(:hover) {
+      opacity: 0.65;
+    }
+    .tile:hover {
+      transform: scale(1.04);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .row {
+      overflow-x: auto;
+    }
+    .track {
+      animation: none;
+    }
+    .set[aria-hidden='true'] {
+      display: none;
+    }
+  }
+</style>

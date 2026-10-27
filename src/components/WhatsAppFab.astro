@@ -1,0 +1,42 @@
+---
+import { waLink } from '../data/content';
+---
+
+<a class="fab" href={waLink} target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+  <span class="fab__dot" aria-hidden="true"></span>WhatsApp
+</a>
+
+<style>
+  .fab {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 30;
+    background: var(--wine);
+    color: #fff;
+    padding: 0 18px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 6px 20px rgba(36, 27, 22, 0.2);
+    transition: transform 160ms var(--ease-out);
+  }
+  .fab:active {
+    transform: scale(0.97);
+  }
+  .fab__dot {
+    width: 10px;
+    height: 10px;
+    background: #6fcf7a;
+    border-radius: 50%;
+  }
+  @media (min-width: 860px) {
+    .fab {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,174 @@
+---
+import { faqs, waLink } from '../data/content';
+---
+
+<section class="wrap" aria-labelledby="faq-title">
+  <div class="faq">
+    <div class="faq__intro" data-reveal>
+      <span class="eyebrow"><span>06</span>Preguntas frecuentes</span>
+      <h2 id="faq-title" class="h2 faq__title">Antes de <span class="serif">que preguntes.</span></h2>
+      <p>
+        ¿No está tu duda?
+        <a class="link" href={waLink} target="_blank" rel="noopener">Escribinos por WhatsApp.</a>
+      </p>
+    </div>
+
+    <div class="faq__list" data-faq>
+      {
+        faqs.map(([q, a], i) => (
+          <div class="item" data-reveal style={`--i:${i % 3}`} data-open={i === 0 ? 'true' : 'false'}>
+            <h3>
+              <button type="button" id={`faq-b${i}`} aria-expanded={i === 0 ? 'true' : 'false'} aria-controls={`faq-p${i}`}>
+                <span>{q}</span>
+                <span class="icon" aria-hidden="true"><i></i><i></i></span>
+              </button>
+            </h3>
+            <div class="panel" id={`faq-p${i}`} role="region" aria-labelledby={`faq-b${i}`}>
+              <div class="panel__in"><p>{a}</p></div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px clamp(32px, 5vw, 80px);
+  }
+  .faq__intro {
+    flex: 4 1 280px;
+    padding: 0 clamp(8px, 1.5vw, 16px);
+  }
+  .faq__title {
+    margin: 16px 0 0;
+  }
+  .faq__intro > p {
+    margin-top: 20px;
+    color: var(--muted);
+    max-width: 30ch;
+  }
+  .link {
+    font-weight: 600;
+    color: var(--accent-text);
+  }
+  .faq__list {
+    flex: 7 1 460px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .item {
+    background: #fff;
+    border-radius: 24px;
+    transition: background-color 200ms ease;
+  }
+  .item[data-open='true'] {
+    background: var(--peach);
+  }
+  h3 {
+    margin: 0;
+  }
+  button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    background: none;
+    border: 0;
+    padding: 20px 20px 20px 24px;
+    text-align: left;
+    cursor: pointer;
+    font: 600 17px var(--body);
+    color: var(--ink);
+    min-height: 44px;
+  }
+  .icon {
+    position: relative;
+    flex: 0 0 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #f4f7dc;
+    transition:
+      background-color 200ms ease,
+      transform 240ms var(--ease-in-out);
+  }
+  .icon i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 14px;
+    height: 2px;
+    margin: -1px 0 0 -7px;
+    background: var(--ink);
+    transition:
+      transform 240ms var(--ease-in-out),
+      background-color 200ms ease;
+  }
+  .icon i:last-child {
+    transform: rotate(90deg);
+  }
+  .item[data-open='true'] .icon {
+    background: var(--accent);
+  }
+  .item[data-open='true'] .icon i {
+    background: var(--wine);
+  }
+  .item[data-open='true'] .icon i:last-child {
+    transform: rotate(0deg);
+  }
+
+  /* Height animates through grid rows: any content length, interruptible. */
+  .panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      grid-template-rows 280ms var(--ease-out),
+      opacity 200ms ease,
+      visibility 0s linear 280ms;
+  }
+  .item[data-open='true'] .panel {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+  .panel__in {
+    overflow: hidden;
+  }
+  .panel__in p {
+    padding: 0 24px 24px;
+    color: #4a3d35;
+    font-size: 15px;
+    max-width: 60ch;
+    text-wrap: pretty;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .panel,
+    .icon i {
+      transition-duration: 1ms;
+    }
+  }
+</style>
+
+<script>
+  const list = document.querySelector<HTMLElement>('[data-faq]');
+  list?.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('button');
+    if (!btn || !list.contains(btn)) return;
+    const item = btn.closest<HTMLElement>('.item')!;
+    const willOpen = item.dataset.open !== 'true';
+    list.querySelectorAll<HTMLElement>('.item').forEach((el) => {
+      const open = el === item && willOpen;
+      el.dataset.open = String(open);
+      el.querySelector('button')!.setAttribute('aria-expanded', String(open));
+    });
+  });
+</script>

@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Eventos from '../components/Eventos.astro';
+import Numeros from '../components/Numeros.astro';
+import Incluye from '../components/Incluye.astro';
+import Pasos from '../components/Pasos.astro';
+import Galeria from '../components/Galeria.astro';
+import Testimonios from '../components/Testimonios.astro';
+import Faq from '../components/Faq.astro';
+import Cta from '../components/Cta.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFab from '../components/WhatsAppFab.astro';
+---
+
+<Layout
+  title="Salón Alba — Salón de fiestas en San Fernando"
+  description="Salón para hasta 50 invitados en San Fernando con cocina propia, patio y coordinadora de eventos. Consultá tu fecha."
+>
+  <Header />
+  <main id="contenido">
+    <Hero />
+    <Eventos />
+    <Numeros />
+    <Incluye />
+    <Pasos />
+    <Galeria />
+    <Testimonios />
+    <Faq />
+    <Cta />
+  </main>
+  <Footer />
+  <WhatsAppFab />
+</Layout>

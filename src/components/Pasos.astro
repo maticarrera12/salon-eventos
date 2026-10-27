@@ -1,0 +1,68 @@
+---
+import { pasos } from '../data/content';
+---
+
+<section class="wrap" aria-labelledby="reservar-title">
+  <div class="head" data-reveal>
+    <span class="eyebrow"><span>03</span>Cómo reservar</span>
+    <h2 id="reservar-title" class="h2 head__title">Cuatro pasos <span class="serif">y a festejar.</span></h2>
+  </div>
+  <ol class="steps">
+    {
+      pasos.map((p, i) => (
+        <li class="step" data-reveal style={`--i:${i}`}>
+          <span class="step__n" style={`background:${p.bg}`}>{p.n}</span>
+          <h3>{p.titulo}</h3>
+          <p>{p.texto}</p>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  .head {
+    padding: 0 clamp(8px, 1.5vw, 16px);
+  }
+  .head__title {
+    margin: 16px 0 0;
+    max-width: 16ch;
+  }
+  .steps {
+    margin: 40px 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    gap: var(--gap);
+  }
+  .step {
+    background: #fff;
+    border-radius: 28px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .step__n {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 22px;
+  }
+  h3 {
+    margin-top: 12px;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+  }
+  .step p {
+    color: var(--muted);
+    font-size: 15px;
+    text-wrap: pretty;
+  }
+</style>

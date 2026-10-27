@@ -1,0 +1,54 @@
+---
+import { numeros } from '../data/content';
+---
+
+<section class="wrap" aria-labelledby="numeros-title" id="salon">
+  <h2 id="numeros-title" class="sr-only">El salón en números</h2>
+  <dl class="grid">
+    {
+      numeros.map((n, i) => (
+        <div class="cell" data-reveal style={`--i:${i};background:${n.bg};color:${n.fg}`}>
+          <dt>{n.label}</dt>
+          <div>
+            <dd class="cell__value">{n.valor}</dd>
+            <dd class="cell__note">{n.nota}</dd>
+          </div>
+        </div>
+      ))
+    }
+  </dl>
+</section>
+
+<style>
+  .grid {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    gap: var(--gap);
+  }
+  .cell {
+    border-radius: 32px;
+    padding: 28px 28px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 48px;
+    min-height: 240px;
+  }
+  dt {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .cell__value {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(72px, 7vw, 104px);
+    line-height: 0.85;
+    letter-spacing: -0.05em;
+  }
+  .cell__note {
+    margin-top: 12px;
+    font-size: 14px;
+    opacity: 0.85;
+  }
+</style>

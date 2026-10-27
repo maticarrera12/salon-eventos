@@ -1,0 +1,222 @@
+---
+import { nav } from '../data/content';
+---
+
+<header class="bar">
+  <div class="bar__in">
+    <a class="logo" href="#top" aria-label="Salón Alba, inicio">
+      <span class="logo__dot" aria-hidden="true"></span>Salón <span class="serif logo__serif">Alba</span>
+    </a>
+    <nav class="bar__nav" aria-label="Principal">
+      {nav.map((l) => <a class="bar__link" href={l.href}>{l.label}</a>)}
+      <a class="bar__cta" href="#contacto">Consultá tu fecha</a>
+    </nav>
+    <button class="bar__menu" type="button" aria-expanded="false" aria-controls="menu-mobile" id="menu-open">Menú</button>
+  </div>
+</header>
+
+<div class="menu" id="menu-mobile" role="dialog" aria-modal="true" aria-label="Menú" inert>
+  <div class="menu__top">
+    <span class="menu__logo">Salón <span class="serif">Alba</span></span>
+    <button class="menu__close" type="button" id="menu-close">Cerrar</button>
+  </div>
+  <nav class="menu__nav" aria-label="Menú mobile">
+    <a href="#top">Inicio</a>
+    {nav.map((l) => <a href={l.href}>{l.label}</a>)}
+  </nav>
+  <a class="menu__cta" href="#contacto">Consultá tu fecha <span aria-hidden="true">→</span></a>
+</div>
+
+<style>
+  .bar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    padding: 12px var(--pad-x);
+  }
+  .bar__in {
+    max-width: 1360px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 999px;
+    padding: 10px 10px 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    box-shadow: 0 1px 0 rgba(36, 27, 22, 0.06);
+  }
+  .logo {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .logo__dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .logo__serif {
+    font-size: 26px;
+    margin-left: -4px;
+  }
+  .bar__nav {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .bar__link {
+    padding: 10px 16px;
+    border-radius: 999px;
+    transition: background-color 160ms ease;
+  }
+  .bar__cta {
+    margin-left: 8px;
+    background: var(--accent);
+    color: var(--wine);
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-weight: 600;
+    transition:
+      background-color 160ms ease,
+      transform 160ms var(--ease-out);
+  }
+  .bar__cta:active,
+  .bar__menu:active {
+    transform: scale(0.97);
+  }
+  .bar__menu {
+    background: var(--wine);
+    color: #fff;
+    border: 0;
+    border-radius: 999px;
+    padding: 0 20px;
+    font: 600 14px var(--body);
+    cursor: pointer;
+    min-height: 44px;
+    transition: transform 160ms var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .bar__link:hover {
+      background: var(--peach);
+    }
+    .bar__cta:hover {
+      background: var(--accent-hover);
+    }
+  }
+  @media (min-width: 860px) {
+    .bar__nav {
+      display: flex;
+    }
+    .bar__menu,
+    .menu {
+      display: none;
+    }
+  }
+
+  /* Overlay: occasional, so it animates. Fast ease-out, never from scale(0). */
+  .menu {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    background: var(--accent);
+    color: var(--wine);
+    display: flex;
+    flex-direction: column;
+    padding: 22px 20px 28px;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 220ms var(--ease-out),
+      transform 220ms var(--ease-out),
+      visibility 0s linear 220ms;
+  }
+  .menu.is-open {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition-delay: 0s;
+  }
+  .menu__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .menu__logo {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 22px;
+  }
+  .menu__logo .serif {
+    font-size: 26px;
+  }
+  .menu__close {
+    background: #fff;
+    color: var(--ink);
+    border: 0;
+    border-radius: 999px;
+    padding: 0 20px;
+    font: 600 14px var(--body);
+    cursor: pointer;
+    min-height: 44px;
+  }
+  .menu__nav {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .menu__nav a {
+    color: var(--wine);
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 52px;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+  .menu__cta {
+    margin-top: 32px;
+    background: #fff;
+    color: var(--ink);
+    padding: 18px 24px;
+    border-radius: 999px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .menu {
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  const menu = document.getElementById('menu-mobile')!;
+  const openBtn = document.getElementById('menu-open')!;
+  const closeBtn = document.getElementById('menu-close')!;
+
+  const setOpen = (open: boolean) => {
+    menu.classList.toggle('is-open', open);
+    menu.toggleAttribute('inert', !open);
+    openBtn.setAttribute('aria-expanded', String(open));
+    document.body.classList.toggle('is-locked', open);
+    (open ? closeBtn : openBtn).focus({ preventScroll: true });
+  };
+  openBtn.addEventListener('click', () => setOpen(true));
+  closeBtn.addEventListener('click', () => setOpen(false));
+  menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.classList.contains('is-open')) setOpen(false);
+  });
+</script>

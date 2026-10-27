@@ -9,40 +9,40 @@ export const nav = [
 ];
 
 export const eventos = [
-  { n: '01', nombre: 'Cumpleaños infantiles', linea: 'Rincón de juegos aparte: los chicos corren, los grandes charlan.', img: '/img/ev-infantiles.jpg', alt: 'Cielo abierto con nubes sobre un cerro', bg: '#d3e8d6' },
-  { n: '02', nombre: '15 años', linea: 'Pista chica, cabina de DJ y camarín para el cambio de vestido.', img: '/img/ev-15.jpg', alt: 'Zapatos blancos de taco sobre fondo rojo', bg: '#f4c9d6' },
-  { n: '03', nombre: 'Casamientos', linea: 'Ceremonia en el patio y cena en el salón, para hasta 50 invitados.', img: '/img/ev-casamientos.jpg', alt: 'Mujer con flores en un campo al atardecer', bg: '#ebd9cc' },
-  { n: '04', nombre: 'Bautismos y comuniones', linea: 'Almuerzos de mediodía con menú para todas las edades.', img: '/img/ev-bautismos.jpg', alt: 'Mesa larga de madera con café en un salón luminoso', bg: '#fbebb8' },
-  { n: '05', nombre: 'Corporativos', linea: 'Proyector y sonido de día, barra abierta para el brindis de noche.', img: '/img/ev-corporativos.jpg', alt: 'Tenedores sobre fondo oscuro', bg: '#e6ddd6' },
+  { n: '01', nombre: 'Cumpleaños infantiles', linea: 'Rincón de juegos aparte: los chicos corren, los grandes charlan.', img: '/img/ev-infantiles.jpg', alt: 'Cielo abierto con nubes sobre un cerro', bg: 'var(--field-3)' },
+  { n: '02', nombre: '15 años', linea: 'Pista chica, cabina de DJ y camarín para el cambio de vestido.', img: '/img/ev-15.jpg', alt: 'Zapatos blancos de taco sobre fondo rojo', bg: 'var(--field-4)' },
+  { n: '03', nombre: 'Casamientos', linea: 'Ceremonia en el patio y cena en el salón, para hasta 50 invitados.', img: '/img/ev-casamientos.jpg', alt: 'Mujer con flores en un campo al atardecer', bg: 'var(--field-6)' },
+  { n: '04', nombre: 'Bautismos y comuniones', linea: 'Almuerzos de mediodía con menú para todas las edades.', img: '/img/ev-bautismos.jpg', alt: 'Mesa larga de madera con café en un salón luminoso', bg: 'var(--field-1)' },
+  { n: '05', nombre: 'Corporativos', linea: 'Proyector y sonido de día, barra abierta para el brindis de noche.', img: '/img/ev-corporativos.jpg', alt: 'Tenedores sobre fondo oscuro', bg: 'var(--field-7)' },
 ];
 
 export const numeros = [
-  { valor: '50', label: 'Invitados sentados', nota: '70 en formato cóctel', bg: '#c2d076', fg: '#001514' },
-  { valor: '110', label: 'Metros cuadrados', nota: 'Salón, patio y cocina', bg: '#fbebb8', fg: '#241B16' },
-  { valor: '3', label: 'Ambientes', nota: 'Salón, patio y cocina', bg: '#d6ebdc', fg: '#241B16' },
-  { valor: '4', label: 'Cuadras de la estación', nota: 'Tren Mitre, ramal Tigre', bg: '#e9efc0', fg: '#241B16' },
+  { valor: '50', label: 'Invitados sentados', nota: '70 en formato cóctel', bg: 'var(--accent)', fg: 'var(--dark)' },
+  { valor: '110', label: 'Metros cuadrados', nota: 'Salón, patio y cocina', bg: 'var(--field-1)', fg: 'var(--ink)' },
+  { valor: '3', label: 'Ambientes', nota: 'Salón, patio y cocina', bg: 'var(--field-2)', fg: 'var(--ink)' },
+  { valor: '4', label: 'Cuadras de la estación', nota: 'Tren Mitre, ramal Tigre', bg: 'var(--hero-card)', fg: 'var(--ink)' },
 ];
 
 export const incluye = [
-  { titulo: 'Catering', texto: 'Cocina propia: recepción, principal, postre y mesa dulce. Menú celíaco y vegetariano sin costo extra.', dot: '#f4b8cb' },
-  { titulo: 'Ambientación', texto: 'Mantelería, vajilla, centros de mesa y armado. Tres estilos para elegir, o lo definimos juntos.', dot: '#fbebb8' },
-  { titulo: 'DJ e iluminación', texto: 'DJ toda la fiesta, luces de pista y luz cálida regulable para la cena.', dot: '#d6ebdc' },
-  { titulo: 'Animación infantil', texto: 'Un animador cada 15 chicos, con actividades según la edad.', dot: '#f4c9d6' },
-  { titulo: 'Coordinación', texto: 'Una coordinadora arma el cronograma con vos y está en el salón de principio a fin.', dot: '#c2d076' },
+  { titulo: 'Catering', texto: 'Cocina propia: recepción, principal, postre y mesa dulce. Menú celíaco y vegetariano sin costo extra.', dot: 'var(--field-5)' },
+  { titulo: 'Ambientación', texto: 'Mantelería, vajilla, centros de mesa y armado. Tres estilos para elegir, o lo definimos juntos.', dot: 'var(--field-1)' },
+  { titulo: 'DJ e iluminación', texto: 'DJ toda la fiesta, luces de pista y luz cálida regulable para la cena.', dot: 'var(--field-2)' },
+  { titulo: 'Animación infantil', texto: 'Un animador cada 15 chicos, con actividades según la edad.', dot: 'var(--field-4)' },
+  { titulo: 'Coordinación', texto: 'Una coordinadora arma el cronograma con vos y está en el salón de principio a fin.', dot: 'var(--accent)' },
 ];
 
 export const pasos = [
-  { n: '1', titulo: 'Consultá la fecha', texto: 'Por formulario o WhatsApp. Te respondemos en el día con disponibilidad y presupuesto base.', bg: '#e9efc0' },
-  { n: '2', titulo: 'Visitá el salón', texto: 'De lunes a sábado. Recorrés los espacios y, si querés, probás el menú.', bg: '#fbebb8' },
-  { n: '3', titulo: 'Reservá con seña', texto: 'Con el 30% la fecha es tuya. El resto, en cuotas hasta 15 días antes.', bg: '#d6ebdc' },
-  { n: '4', titulo: 'Disfrutá tu evento', texto: 'Cerramos el cronograma una semana antes. Ese día, vos solo llegás.', bg: '#c2d076' },
+  { n: '1', titulo: 'Consultá la fecha', texto: 'Por formulario o WhatsApp. Te respondemos en el día con disponibilidad y presupuesto base.', bg: 'var(--hero-card)' },
+  { n: '2', titulo: 'Visitá el salón', texto: 'De lunes a sábado. Recorrés los espacios y, si querés, probás el menú.', bg: 'var(--field-1)' },
+  { n: '3', titulo: 'Reservá con seña', texto: 'Con el 30% la fecha es tuya. El resto, en cuotas hasta 15 días antes.', bg: 'var(--field-2)' },
+  { n: '4', titulo: 'Disfrutá tu evento', texto: 'Cerramos el cronograma una semana antes. Ese día, vos solo llegás.', bg: 'var(--accent)' },
 ];
 
 // Sample quotes for the pitch landing; replace with real reviews before going live.
 export const testimonios = [
-  { cita: 'Llegamos a las nueve y estaba todo armado. Lo único que hicimos fue bailar.', autor: 'Nombre Apellido', evento: 'Casamiento, marzo', bg: '#e9efc0' },
-  { cita: 'Los chicos estuvieron tres horas en los juegos y nosotros pudimos comer tranquilos.', autor: 'Nombre Apellido', evento: 'Cumpleaños de 6, junio', bg: '#d6ebdc' },
-  { cita: 'La coordinadora se acordaba de cada detalle que habíamos hablado en la visita.', autor: 'Nombre Apellido', evento: '15 años, septiembre', bg: '#fbebb8' },
+  { cita: 'Llegamos a las nueve y estaba todo armado. Lo único que hicimos fue bailar.', autor: 'Nombre Apellido', evento: 'Casamiento, marzo', bg: 'var(--hero-card)' },
+  { cita: 'Los chicos estuvieron tres horas en los juegos y nosotros pudimos comer tranquilos.', autor: 'Nombre Apellido', evento: 'Cumpleaños de 6, junio', bg: 'var(--field-2)' },
+  { cita: 'La coordinadora se acordaba de cada detalle que habíamos hablado en la visita.', autor: 'Nombre Apellido', evento: '15 años, septiembre', bg: 'var(--field-1)' },
 ];
 
 export const faqs = [

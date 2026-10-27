@@ -3,17 +3,32 @@
 @import '@fontsource/instrument-serif/400-italic.css';
 
 :root {
-  --bg: #fff9f7;
-  --ink: #241b16;
-  --muted: #5c4e45;
-  --accent: #c2d076;
-  --accent-hover: #aebe5e;
-  --accent-text: #001514;
-  --peach: #e9efc0;
-  --wine: #001514;
-  --wine-hover: #12302e;
-  --coral: #c2d076;
-  --on-dark: #d9ccc2;
+  --bg: #fff8f1;
+  --ink: #2b1d1a;
+  --muted: #66554d;
+  --accent: #f4745a;
+  --accent-hover: #f98a72;
+  --accent-text: #b8341b;
+  /* Soft tint behind the hero card; reused by eyebrow pills, open FAQ item, tiles and a few cards. */
+  --hero-card: #ffe0d2;
+  --dark: #0e2d26;
+  --dark-hover: #1a4a3f;
+  --on-dark-accent: #f7d774;
+  --on-dark: #d8e3dc;
+  --on-dark-soft: #aebfb6;
+  --on-dark-strong: #f1f6f2;
+  --ink-soft: #4d3d36;
+  --online: #6fcf7a;
+
+  /* Decorative fields (tags, cards, number cells, tiles, testimonials). The numbers carry no meaning. */
+  --hero-card-soft: #fff0e8;
+  --field-1: #fbe7a1;
+  --field-2: #cfe8da;
+  --field-3: #dbe8c9;
+  --field-4: #f6cbd3;
+  --field-5: #f2b3bf;
+  --field-6: #ecdccb;
+  --field-7: #e7e0d8;
 
   --display: 'Bricolage Grotesque Variable', sans-serif;
   --serif: 'Instrument Serif', serif;
@@ -78,7 +93,7 @@ a {
 }
 
 ::selection {
-  background: #f4c9d6;
+  background: var(--field-4);
 }
 :focus-visible {
   outline: 2px solid var(--accent);
@@ -120,7 +135,7 @@ a {
   color: var(--accent-text);
 }
 .eyebrow span {
-  background: var(--peach);
+  background: var(--hero-card);
   border-radius: 999px;
   padding: 4px 10px;
 }
@@ -147,33 +162,70 @@ a {
   top: 12px;
 }
 
-/* Pill buttons. Press feedback is instant; hover only on real pointers. */
+/* Arrow pill: the dot is a full-height circle (button height minus a 6px inset);
+   on hover it stretches across the button but keeps that 6px inset on every side. Label and arrow swap to the
+   dot's foreground colour so the text stays readable on both states. */
 .pill {
+  --r: 26px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
+  justify-content: space-between;
   gap: 28px;
+  height: 64px;
+  padding: 0 calc(var(--r) * 2 + 22px) 0 24px;
   border-radius: 999px;
+  background: var(--pill-bg);
+  color: var(--pill-fg);
   font-weight: 600;
   transition:
-    background-color 160ms ease,
-    color 160ms ease,
+    color 450ms ease,
     transform 160ms var(--ease-out);
+}
+.pill::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--dot);
+  clip-path: inset(6px 6px 6px calc(100% - var(--r) * 2 - 6px) round var(--r));
+  transition: clip-path 800ms var(--ease-drawer);
 }
 .pill:active {
   transform: scale(0.97);
 }
 .pill__arrow {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 220ms var(--ease-out);
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  bottom: 6px;
+  width: calc(var(--r) * 2);
+  display: grid;
+  place-items: center;
+  color: var(--dot-fg);
+  transition: color 450ms ease;
 }
 @media (hover: hover) and (pointer: fine) {
-  .pill:hover .pill__arrow {
-    transform: translateX(3px);
+  .pill:hover {
+    color: var(--dot-fg);
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .pill:hover::before {
+    clip-path: inset(6px round var(--r));
+  }
+}
+.pill:focus-visible {
+  color: var(--dot-fg);
+}
+.pill:focus-visible::before {
+  clip-path: inset(6px round var(--r));
+}
+@media (prefers-reduced-motion: reduce) {
+  .pill::before {
+    transition-duration: 1ms;
   }
 }
 

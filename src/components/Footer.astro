@@ -41,8 +41,8 @@ import { waLink } from '../data/content';
   .foot__in {
     max-width: 1360px;
     margin: 0 auto;
-    background: var(--wine);
-    color: #f2e8df;
+    background: var(--dark);
+    color: var(--on-dark-strong);
     border-radius: clamp(28px, 3.5vw, 48px);
     padding: clamp(32px, 5vw, 64px) clamp(28px, 5vw, 72px) 28px;
   }
@@ -76,7 +76,7 @@ import { waLink } from '../data/content';
   .foot__brand p {
     margin-top: 16px;
     font-size: 14px;
-    color: #bfafa3;
+    color: var(--on-dark-soft);
     max-width: 30ch;
   }
   .foot__col {
@@ -94,15 +94,15 @@ import { waLink } from '../data/content';
   .foot__h {
     font-size: 13px;
     font-weight: 600;
-    color: var(--coral);
+    color: var(--on-dark-accent);
     margin-bottom: 4px;
   }
   .foot__dim {
-    color: #bfafa3;
+    color: var(--on-dark-soft);
   }
   .foot__col a,
   .foot__legal a {
-    color: #f2e8df;
+    color: var(--on-dark-strong);
     width: fit-content;
     transition: color 160ms ease;
   }
@@ -113,14 +113,14 @@ import { waLink } from '../data/content';
     justify-content: space-between;
     gap: 12px;
     font-size: 12px;
-    color: #bfafa3;
+    color: var(--on-dark-soft);
   }
   .foot__legal a {
     text-decoration: underline;
   }
   @media (hover: hover) and (pointer: fine) {
     .foot__col a:hover {
-      color: var(--coral);
+      color: var(--on-dark-accent);
     }
   }
 </style>

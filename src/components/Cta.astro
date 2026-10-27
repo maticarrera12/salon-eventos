@@ -8,7 +8,7 @@ import { waLink } from '../data/content';
     <div class="cta__side">
       <p>Los sábados de primavera se reservan con seis a ocho meses de anticipación. Consultá antes de que se ocupe.</p>
       <a class="pill cta__main" href="#contacto">
-        Consultá tu fecha <span class="pill__arrow cta__arrow" aria-hidden="true">→</span>
+        <span class="pill__label">Consultá tu fecha</span><span class="pill__arrow" aria-hidden="true">→</span>
       </a>
       <a class="cta__wa" href={waLink} target="_blank" rel="noopener">Escribinos por WhatsApp <span aria-hidden="true">↗</span></a>
     </div>
@@ -22,8 +22,8 @@ import { waLink } from '../data/content';
     padding: var(--section) var(--pad-x) var(--pad-x);
   }
   .cta {
-    background: #c2d076;
-    color: var(--wine);
+    background: var(--accent);
+    color: var(--dark);
     border-radius: clamp(28px, 3.5vw, 48px);
     padding: clamp(32px, 6vw, 88px);
     display: flex;
@@ -50,21 +50,18 @@ import { waLink } from '../data/content';
     max-width: 34ch;
   }
   .cta__main {
-    justify-content: space-between;
-    background: var(--wine);
-    color: #fff;
-    padding: 16px 16px 16px 24px;
-  }
-  .cta__arrow {
-    background: var(--accent);
-    color: var(--wine);
+    --pill-bg: var(--dark);
+    --pill-fg: #fff;
+    --dot: #fff;
+    --dot-fg: var(--dark);
+    width: 100%;
   }
   .cta__wa {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: #fff;
-    color: var(--wine);
+    color: var(--dark);
     padding: 20px 24px;
     border-radius: 999px;
     font-weight: 600;
@@ -76,13 +73,9 @@ import { waLink } from '../data/content';
     transform: scale(0.97);
   }
   @media (hover: hover) and (pointer: fine) {
-    .cta__main:hover {
-      background: var(--wine-hover);
-      color: #fff;
-    }
     .cta__wa:hover {
       background: var(--bg);
-      color: var(--wine);
+      color: var(--dark);
     }
   }
 </style>
